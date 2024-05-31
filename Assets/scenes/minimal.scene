@@ -100,6 +100,61 @@
               "__guid": "4e4255c8-6a19-4d6d-8cb9-1681a7ca7f9a",
               "__enabled": false,
               "Scale": 0.2
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "5dc61e97-305f-4be1-864f-5c413c034983",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            }
+          ]
+        },
+        {
+          "__guid": "47440571-328f-4683-8992-fc5797e8f287",
+          "Flags": 0,
+          "Name": "RightPaddle",
+          "Position": "73.54398,-702.9183,7.102249",
+          "Scale": "1.687218,0.4170722,21.09561",
+          "Tags": "right_paddle,paddle",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "77266ae4-5fb1-42d2-b3eb-f52861df6066",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "Off",
+              "Tint": "0,0,0,1"
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "d40c34c7-bf47-4e23-bb68-4e9f3770bd1e",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {
+                "X": true,
+                "Y": true,
+                "Pitch": true,
+                "Yaw": true,
+                "Roll": true
+              },
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "327d0a1a-2239-486f-932b-f3e73c53debd",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
             }
           ]
         },
@@ -151,7 +206,7 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "50,50,50",
-              "Static": false
+              "Static": true
             }
           ]
         },
@@ -229,6 +284,7 @@
               "Name": "BottomBoundary",
               "Position": "1543.667,244.1861,-409.9609",
               "Scale": "10,37.59847,0.656939",
+              "Tags": "bottom_boundary,boundary",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -247,7 +303,7 @@
                   "Center": "0,0,0",
                   "IsTrigger": false,
                   "Scale": "50,50,50",
-                  "Static": true
+                  "Static": false
                 }
               ]
             },
@@ -257,6 +313,7 @@
               "Name": "TopBoundary",
               "Position": "1543.667,244.1861,727.4567",
               "Scale": "10,37.598,0.656939",
+              "Tags": "top_boundary,boundary",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -343,7 +400,7 @@
           "__guid": "27bd05ca-3db0-4e2c-9731-42f13349fe62",
           "Flags": 0,
           "Name": "Ball",
-          "Position": "70,84.66883,26.93867",
+          "Position": "70,96.55853,26.93867",
           "Scale": "1.494811,1,1",
           "Enabled": true,
           "NetworkMode": 2,
@@ -372,6 +429,7 @@
               "Gravity": false,
               "LinearDamping": 0,
               "Locking": {
+                "X": true,
                 "Pitch": true,
                 "Yaw": true,
                 "Roll": true
@@ -388,68 +446,45 @@
               "IsTrigger": false,
               "Scale": "50,50,50",
               "Static": false
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "e39adbc8-6534-4107-bafa-153655514d1a",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "50,50,50",
+              "Static": false
             }
           ]
-        }
-      ]
-    },
-    {
-      "__guid": "cbaaa6f7-2ebe-4aa7-ae6a-277c5b0115b0",
-      "Flags": 0,
-      "Name": "Camera",
-      "Position": "2151.09,-853.193,193.7672",
-      "Rotation": "0,0,0.9914448,0.1305264",
-      "Tags": "maincamera",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
+        },
         {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "cc037079-f11b-437e-9a42-2291fe7ede22",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 60,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 10
-        }
-      ]
-    },
-    {
-      "__guid": "2c8e3434-be11-47a2-95d8-96c1c19d7b38",
-      "Flags": 0,
-      "Name": "Camera",
-      "Position": "-1761.001,1154.959,216.247",
-      "Rotation": "0,0,-0.258819,0.9659259",
-      "Tags": "maincamera",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
+          "__guid": "25a136a1-a977-4aef-aa88-b09cf2901d2a",
+          "Flags": 0,
+          "Name": "BallSpeedListener",
+          "Position": "75.293,58.82,27.148",
+          "Scale": "15.23415,1,26.21136",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "d9df64da-2f0c-438e-809b-4b100fb2e42c",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "50,50,50",
+              "Static": true
+            }
+          ]
+        },
         {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "9c817b13-6d66-46b4-a5ae-17f693ae5d0d",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 60,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 10
+          "__guid": "94e2e03d-3132-4364-81bb-b1bd554c5e25",
+          "Flags": 0,
+          "Name": "Screen",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true
         }
       ]
     }
@@ -477,7 +512,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-31T13:49:11.1963484\u002B01:00",
+  "LastSaved": "2024-05-31T17:43:08.3579602\u002B01:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
