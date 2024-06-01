@@ -1,0 +1,44 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent;
+
+<root>
+	<panel class="score">
+		@score
+	</panel>
+</root>
+
+@code
+{
+
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World";
+
+	public BallController ball => Components.Get<BallController>();
+
+	private string score {
+		get {
+			if(ball.Scores.ContainsKey( "left_score" ) & ball.Scores.ContainsKey("right_score")) {
+
+				if((int)ball.Scores["left_score"] >= 10) {
+					return "Left Player Wins!";
+				}
+				if((int)ball.Scores["right_score"] >= 10) {
+					return "Right Player Wins!";
+				}
+
+				return $"{ball.Scores["left_score"]} - {ball.Scores["right_score"]}";
+
+			}else {
+				return "shit";
+			}
+		}
+
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( score );
+
+
+}

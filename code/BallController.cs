@@ -17,7 +17,7 @@ public sealed class BallController : Component, Component.ICollisionListener, Co
 
 	private Vector3 PreImpactVelocity = new Vector3( 0, 0, 0f );
 
-	Hashtable Scores = new Hashtable { { "left_score", 0 }, { "right_score", 0 } };
+	public Hashtable Scores = new Hashtable { { "left_score", 0 }, { "right_score", 0 } };
 
 	protected override void OnUpdate()
 	{
@@ -36,15 +36,12 @@ public sealed class BallController : Component, Component.ICollisionListener, Co
 
 	void ITriggerListener.OnTriggerEnter( Collider other )
 	{
-		Log.Info( "listener vel" + rb.Velocity );
 		PreImpactVelocity = rb.Velocity;
 	}
 
 	void ICollisionListener.OnCollisionStart( Collision other )
 	{
 		var otherObject = other.Other;
-
-		Log.Info( "collision vel" + rb.Velocity );
 
 		if ( otherObject.GameObject.Tags.Contains( "paddle" ) )
 		{
@@ -71,14 +68,13 @@ public sealed class BallController : Component, Component.ICollisionListener, Co
 		{
 			if ( otherObject.GameObject.Tags.Contains( "left_goal" ) )
 			{
-				Scores["right_score"] = (int)Scores["left_score"]! + 1;
+				Scores["right_score"] = (int)Scores["right_score"]! + 1;
 			}
 
 			if ( otherObject.GameObject.Tags.Contains( "right_goal" ) )
 			{
 				Scores["left_score"] = (int)Scores["left_score"]! + 1;
 			}
-
 			RestartGame();
 		}
 	}

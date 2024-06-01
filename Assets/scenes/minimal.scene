@@ -100,14 +100,6 @@
               "__guid": "4e4255c8-6a19-4d6d-8cb9-1681a7ca7f9a",
               "__enabled": false,
               "Scale": 0.2
-            },
-            {
-              "__type": "Sandbox.ScreenPanel",
-              "__guid": "5dc61e97-305f-4be1-864f-5c413c034983",
-              "AutoScreenScale": true,
-              "Opacity": 1,
-              "Scale": 1,
-              "ZIndex": 100
             }
           ]
         },
@@ -206,7 +198,7 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "50,50,50",
-              "Static": true
+              "Static": false
             }
           ]
         },
@@ -402,6 +394,7 @@
           "Name": "Ball",
           "Position": "70,96.55853,26.93867",
           "Scale": "1.494811,1,1",
+          "Tags": "ball",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -454,6 +447,19 @@
               "IsTrigger": true,
               "Scale": "50,50,50",
               "Static": false
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "976beccb-7282-4c0b-81da-aa634e95eaa6",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "Score",
+              "__guid": "65a1ffc6-2a63-4ce3-ad9f-665efbded2ac",
+              "MyStringValue": "Hello World!"
             }
           ]
         },
@@ -462,7 +468,7 @@
           "Flags": 0,
           "Name": "BallSpeedListener",
           "Position": "75.293,58.82,27.148",
-          "Scale": "15.23415,1,26.21136",
+          "Scale": "15.23415,21.10379,26.21136",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -476,15 +482,6 @@
               "Static": true
             }
           ]
-        },
-        {
-          "__guid": "94e2e03d-3132-4364-81bb-b1bd554c5e25",
-          "Flags": 0,
-          "Name": "Screen",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true
         }
       ]
     }
@@ -512,7 +509,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-31T17:43:08.3579602\u002B01:00",
+  "LastSaved": "2024-06-01T14:40:42.0050388\u002B01:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
