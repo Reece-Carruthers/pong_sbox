@@ -27,6 +27,43 @@
               "Model": "models/dev/box.vmdl",
               "RenderType": "On",
               "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.LineRenderer",
+              "__guid": "696c1b55-4f74-4514-b3c8-279a8ee09838",
+              "Color": {
+                "color": [
+                  {
+                    "t": 1,
+                    "c": "0,0,0,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "EndCap": "None",
+              "Opaque": true,
+              "Points": [
+                {
+                  "_type": "gameobject",
+                  "go": "76140a2a-2439-4bca-ac5d-3b19a1cdab11"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "f09bcdc4-e9cb-4aab-b2bd-524e21d993ff"
+                }
+              ],
+              "SplineBias": 0,
+              "SplineContinuity": 0,
+              "SplineInterpolation": 0,
+              "SplineTension": 0,
+              "StartCap": "None",
+              "Width": [
+                {
+                  "x": 0.5,
+                  "y": 5
+                }
+              ],
+              "Wireframe": false
             }
           ]
         },
@@ -89,10 +126,14 @@
             {
               "__type": "Sandbox.Tonemapping",
               "__guid": "77613778-407e-470c-a894-88db93239fef",
+              "__version": 1,
               "__enabled": false,
+              "ExposureBias": 2,
               "ExposureCompensation": 0,
+              "ExposureMethod": "RGB",
               "MaximumExposure": 2,
               "MinimumExposure": 1,
+              "Mode": "Legacy",
               "Rate": 1
             },
             {
@@ -104,11 +145,59 @@
           ]
         },
         {
+          "__guid": "47440571-328f-4683-8992-fc5797e8f287",
+          "Flags": 0,
+          "Name": "RightPaddle",
+          "Position": "73.54398,-702.9183,7.102249",
+          "Scale": "1.687218,0.4170722,21.09561",
+          "Tags": "right_paddle,paddle",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "77266ae4-5fb1-42d2-b3eb-f52861df6066",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "Off",
+              "Tint": "0,0,0,1"
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "d40c34c7-bf47-4e23-bb68-4e9f3770bd1e",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {
+                "X": true,
+                "Y": true,
+                "Pitch": true,
+                "Yaw": true,
+                "Roll": true
+              },
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "327d0a1a-2239-486f-932b-f3e73c53debd",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            }
+          ]
+        },
+        {
           "__guid": "e649bd26-ed45-40ea-8ae9-4869bb7507d5",
           "Flags": 0,
           "Name": "LeftPaddle",
-          "Position": "73.54398,266.4193,81.56013",
+          "Position": "73.54398,871.0759,0",
           "Scale": "1.687218,0.4170722,2.329651",
+          "Tags": "left_paddle,paddle",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -124,7 +213,7 @@
             {
               "__type": "PaddleController",
               "__guid": "591c0886-e7e6-4289-8689-11b330d63317",
-              "PaddleMoveSpeed": 500
+              "PaddleMoveSpeed": 25000
             },
             {
               "__type": "Sandbox.Rigidbody",
@@ -158,7 +247,7 @@
           "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
           "Flags": 0,
           "Name": "2D Skybox",
-          "Position": "0,0,0",
+          "Position": "146.7776,-404.1409,-168.0899",
           "Tags": "skybox",
           "Enabled": true,
           "NetworkMode": 2,
@@ -176,7 +265,7 @@
               "Texture": "textures/cubemaps/default2.vtex",
               "Bounds": {
                 "Mins": "-512,-512,-512",
-                "Maxs": "512,512,512"
+                "Maxs": "577.8,2377.101,973.8002"
               },
               "DelayBetweenUpdates": 0.1,
               "Feathering": 0.02,
@@ -227,7 +316,8 @@
               "Flags": 0,
               "Name": "BottomBoundary",
               "Position": "1543.667,244.1861,-409.9609",
-              "Scale": "0.478356,37.59847,0.656939",
+              "Scale": "10,37.59847,0.656939",
+              "Tags": "bottom_boundary,boundary",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -246,7 +336,7 @@
                   "Center": "0,0,0",
                   "IsTrigger": false,
                   "Scale": "50,50,50",
-                  "Static": true
+                  "Static": false
                 }
               ]
             },
@@ -255,7 +345,8 @@
               "Flags": 0,
               "Name": "TopBoundary",
               "Position": "1543.667,244.1861,727.4567",
-              "Scale": "0.478356,37.598,0.656939",
+              "Scale": "10,37.598,0.656939",
+              "Tags": "top_boundary,boundary",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -283,7 +374,8 @@
               "Flags": 0,
               "Name": "RightBoundary",
               "Position": "1543.667,-678.5038,159.0482",
-              "Scale": "0.478,0.677418,23.42",
+              "Scale": "10,0.677418,23.42",
+              "Tags": "goals,right_goal",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -293,7 +385,7 @@
                   "__guid": "0c085c55-37a1-4f01-a348-899016bc6df4",
                   "BodyGroups": 18446744073709551615,
                   "Model": "models/dev/box.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "0,0,0,1"
                 },
                 {
@@ -311,7 +403,8 @@
               "Flags": 0,
               "Name": "LeftBoundary",
               "Position": "1543.667,1166.852,159.0482",
-              "Scale": "0.478,0.677418,23.42",
+              "Scale": "10,0.677418,23.42",
+              "Tags": "left_goal,goals",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -321,7 +414,7 @@
                   "__guid": "70c6dc9e-d3b9-4b7c-a6ce-9d461fd65d8f",
                   "BodyGroups": 18446744073709551615,
                   "Model": "models/dev/box.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "0,0,0,1"
                 },
                 {
@@ -333,6 +426,102 @@
                   "Static": false
                 }
               ]
+            }
+          ]
+        },
+        {
+          "__guid": "27bd05ca-3db0-4e2c-9731-42f13349fe62",
+          "Flags": 0,
+          "Name": "Ball",
+          "Position": "70,96.55853,26.93867",
+          "Scale": "1.494811,0.75,0.75",
+          "Tags": "ball",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "6b9a02c8-8cba-4c62-a87d-89349b46dffd",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "Off",
+              "Tint": "0.86977,0,0.94884,1"
+            },
+            {
+              "__type": "BallController",
+              "__guid": "b70f4228-5bc3-463e-bc08-c42c1c6da46e",
+              "Background": {
+                "_type": "gameobject",
+                "go": "d8daccc7-c1a1-487d-9649-1680d412b6d2"
+              }
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "f3b106d4-f7fa-4614-83df-3bb751700cdd",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {
+                "X": true,
+                "Pitch": true,
+                "Yaw": true,
+                "Roll": true
+              },
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "5d9294fd-2889-4a12-8b2c-69e99fad5051",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false,
+              "Surface": "surfaces/rubber.surface"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "e39adbc8-6534-4107-bafa-153655514d1a",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "976beccb-7282-4c0b-81da-aa634e95eaa6",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "Score",
+              "__guid": "65a1ffc6-2a63-4ce3-ad9f-665efbded2ac",
+              "MyStringValue": "Hello World!"
+            }
+          ]
+        },
+        {
+          "__guid": "25a136a1-a977-4aef-aa88-b09cf2901d2a",
+          "Flags": 0,
+          "Name": "BallSpeedListener",
+          "Position": "75.293,58.82,27.148",
+          "Scale": "15.23415,21.10379,26.21136",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "d9df64da-2f0c-438e-809b-4b100fb2e42c",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "50,50,50",
+              "Static": true
             }
           ]
         }
@@ -360,9 +549,9 @@
       "IncludedBodies": ""
     }
   },
-  "Title": "minimal",
+  "Title": "pong",
   "Description": "",
-  "LastSaved": "2024-05-29T16:31:36.6022199\u002B01:00",
+  "LastSaved": "2024-06-03T17:30:32.0555679\u002B01:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

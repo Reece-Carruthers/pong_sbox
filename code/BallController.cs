@@ -12,8 +12,8 @@ public sealed class BallController : Component, Component.ICollisionListener, Co
 
 	private Vector3 _ballStartingPosition;
 
-	private float _defaultSpeed = 500f;
-	private float _hitSpeed = 250f;
+	private float DefaultSpeed= 500f;
+	private const float SpeedMultiplier = 1.1f;
 
 	private Vector3 PreImpactVelocity = new Vector3( 0, 0, 0f );
 
@@ -45,17 +45,16 @@ public sealed class BallController : Component, Component.ICollisionListener, Co
 
 		if ( otherObject.GameObject.Tags.Contains( "paddle" ) )
 		{
-			var paddle = other.Other.Body;
-			var paddleVelocity = paddle.Velocity;
+			var paddlePosition = other.Other.Body.Transform.Position;
 
 			if ( otherObject.GameObject.Tags.Contains( "left_paddle" ) )
 			{
-				ApplyPaddleForceToBall( applyForceLeft: false, paddleVelocity );
+				ApplyPaddleForceToBall(paddlePosition );
 			}
 
 			if ( otherObject.GameObject.Tags.Contains( "right_paddle" ) )
 			{
-				ApplyPaddleForceToBall( applyForceLeft: true, paddleVelocity );
+				ApplyPaddleForceToBall( paddlePosition );
 			}
 		}
 
@@ -84,33 +83,22 @@ public sealed class BallController : Component, Component.ICollisionListener, Co
 		startDirection = !startDirection;
 		GameStart();
 	}
-
-	private void ApplyPaddleForceToBall( bool applyForceLeft, Vector3 paddleVelocity )
+	
+	private void ApplyPaddleForceToBall(Vector3 paddlePosition)
 	{
-		var ballVelocity = PreImpactVelocity;
 
-		var flippedVelocity = new Vector3( ballVelocity.x, -ballVelocity.y, ballVelocity.z );
+		paddlePosition.x = 0;
 
-		var horizontalForce = applyForceLeft ? Vector3.Left : Vector3.Right;
-		horizontalForce *= MathF.Abs( paddleVelocity.y );
+		Vector3 newVelocity = Vector3.Reflect(PreImpactVelocity, paddlePosition);
 
-		var newVelocity = flippedVelocity + horizontalForce;
+		newVelocity.x = 0;
 
-		newVelocity.y += ConvertSpeed(newVelocity.y, _hitSpeed);
+		newVelocity = newVelocity.Normal * DefaultSpeed;
 
 		rb.Velocity = newVelocity;
-	}
-	
-	private float ConvertSpeed(float velocity, float speed)
-	{
-		if (velocity < 0)
-		{
-			return -speed;
-		}
 
-		return speed;
+		DefaultSpeed *= SpeedMultiplier;
 	}
-
 
 	private void ApplyWallForceToBall()
 	{
@@ -142,12 +130,13 @@ public sealed class BallController : Component, Component.ICollisionListener, Co
 
 	private void GameStart()
 	{
+		DefaultSpeed = 500f;
 		rb.Velocity = Vector3.Zero;
 		rb.PhysicsBody.Position = _ballStartingPosition;
 
 		if ( startDirection )
-			rb.Velocity = Vector3.Left * _defaultSpeed;
+			rb.Velocity = Vector3.Left * DefaultSpeed;
 		else
-			rb.Velocity = Vector3.Right * _defaultSpeed;
+			rb.Velocity = Vector3.Right * DefaultSpeed;
 	}
 }

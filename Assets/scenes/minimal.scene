@@ -27,6 +27,43 @@
               "Model": "models/dev/box.vmdl",
               "RenderType": "On",
               "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.LineRenderer",
+              "__guid": "696c1b55-4f74-4514-b3c8-279a8ee09838",
+              "Color": {
+                "color": [
+                  {
+                    "t": 1,
+                    "c": "0,0,0,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "EndCap": "None",
+              "Opaque": true,
+              "Points": [
+                {
+                  "_type": "gameobject",
+                  "go": "76140a2a-2439-4bca-ac5d-3b19a1cdab11"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "f09bcdc4-e9cb-4aab-b2bd-524e21d993ff"
+                }
+              ],
+              "SplineBias": 0,
+              "SplineContinuity": 0,
+              "SplineInterpolation": 0,
+              "SplineTension": 0,
+              "StartCap": "None",
+              "Width": [
+                {
+                  "x": 0.5,
+                  "y": 5
+                }
+              ],
+              "Wireframe": false
             }
           ]
         },
@@ -89,10 +126,14 @@
             {
               "__type": "Sandbox.Tonemapping",
               "__guid": "77613778-407e-470c-a894-88db93239fef",
+              "__version": 1,
               "__enabled": false,
+              "ExposureBias": 2,
               "ExposureCompensation": 0,
+              "ExposureMethod": "RGB",
               "MaximumExposure": 2,
               "MinimumExposure": 1,
+              "Mode": "Legacy",
               "Rate": 1
             },
             {
@@ -393,7 +434,7 @@
           "Flags": 0,
           "Name": "Ball",
           "Position": "70,96.55853,26.93867",
-          "Scale": "1.494811,1,1",
+          "Scale": "1.494811,0.75,0.75",
           "Tags": "ball",
           "Enabled": true,
           "NetworkMode": 2,
@@ -404,7 +445,7 @@
               "__guid": "6b9a02c8-8cba-4c62-a87d-89349b46dffd",
               "BodyGroups": 18446744073709551615,
               "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
+              "RenderType": "Off",
               "Tint": "0.86977,0,0.94884,1"
             },
             {
@@ -438,7 +479,8 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "50,50,50",
-              "Static": false
+              "Static": false,
+              "Surface": "surfaces/rubber.surface"
             },
             {
               "__type": "Sandbox.BoxCollider",
@@ -507,9 +549,9 @@
       "IncludedBodies": ""
     }
   },
-  "Title": "minimal",
+  "Title": "pong",
   "Description": "",
-  "LastSaved": "2024-06-01T14:40:42.0050388\u002B01:00",
+  "LastSaved": "2024-06-03T17:30:30.112618\u002B01:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
