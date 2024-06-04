@@ -1,0 +1,33 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<panel class="difficulty_panel">
+		<h2 class="title">Select a difficulty</h2>
+		<div class="difficulty_container">
+			<button>
+				Easy
+			</button>
+			<button>
+				Medium
+			</button>
+			<button>
+				Hard
+			</button>
+		</div>
+	</panel>
+</root>
+
+@code
+{
+
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+
+	
+	
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+}

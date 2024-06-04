@@ -198,8 +198,8 @@
                 "go": "27bd05ca-3db0-4e2c-9731-42f13349fe62",
                 "component_type": "BallController"
               },
-              "Acceleration": 100,
-              "MaxSpeed": 1000,
+              "Acceleration": 10,
+              "MaxSpeed": 500,
               "Threshold": 0.1
             }
           ]
@@ -564,7 +564,7 @@
   },
   "Title": "pong",
   "Description": "",
-  "LastSaved": "2024-06-03T20:44:26.8967138\u002B01:00",
+  "LastSaved": "2024-06-04T16:12:59.3216165\u002B01:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
